@@ -1,0 +1,5 @@
+flask
+torch
+torchvision
+jinja2
+Pillow
