@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>ActScan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            /* Non-scroll desktop */
+        }
+
+        body {
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: #e9f0fc;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-detect {
+            background-color: #0d6efd;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 5px;
+        }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: #4b5563;
+            max-width: 500px;
+            margin-top: 15px;
+            text-align: justify;
+            /* Tambahkan ini */
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #particles-js {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+
+        @media (max-width: 768px) {
+
+            html,
+            body {
+                height: auto;
+                overflow: auto;
+                /* Allow scroll on mobile */
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 10px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <nav class="navbar navbar-expand-lg navbar-light px-4">
+        <a class="navbar-brand fw-bold text-primary animate__animated animate__fadeIn animate__fast"
+            style="font-size: 30px;" href="#">ActScan</a>
+        <div class="ms-auto">
+            <a href="#"
+                class="me-3 text-decoration-none text-dark animate__animated animate__fadeIn animate__fast">Home</a>
+            <a href="{{ url_for('detect') }}"
+                class="btn btn-detect animate__animated animate__fadeIn animate__fast">Detect</a>
+        </div>
+    </nav>
+    <section class="hero container">
+        <div class="row align-items-center justify-content-center">
+            <!-- Text Column -->
+            <div class="col-md-6 text-center text-md-start animate__animated animate__fadeIn animate__fast">
+                <h1 class="hero-title me-2">Welcome to ActScan!</h1>
+                <p class="hero-subtitle">
+                    Platform yang mampu mendeteksi dan mengklasifikasikan aktivitas manusia secara otomatis
+                    melalui gambar.
+                    Dengan teknologi CNN, kami menghadirkan analisis cepat dan akurat untuk berbagai aktivitas seperti
+                    makan, minum, berlari, dan lainnya.
+                    Unggah gambar Anda sekarang dan lihat hasil deteksi dalam sekejap!
+                </p>
+            </div>
+            <div class="col-md-6 hero-image text-center mt-4 mt-md-0">
+                <img class="animate__animated animate__fadeIn animate__faster"
+                    src="{{ url_for('static', filename='Illustration.png') }}" alt="Ilustrasi AI">
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 70
+                },
+                color: {
+                    value: '#e3eaf8'
+                },
+                size: {
+                    value: 3
+                },
+                shape: {
+                    type: 'polygon'
+                },
+                move: {
+                    speed: 2
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 100,
+                    color: '#0d6efd',
+                    opacity: 0.5,
+                    width: 1.5
+                }
+            },
+            interactivity: {
+                events: {
+                    onhover: {
+                        enable: false,
+                        mode: "repulse" // ini tidak akan aktif karena enable: false
+                    },
+                    onclick: {
+                        enable: false,
+                        mode: "push" // juga tidak aktif
+                    },
+                    resize: true
+                }
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
